@@ -1,6 +1,7 @@
 import os
 import jnim
 import strutils
+import strformat
 import ./uuid_classes
 
 # jars/に入っているjarファイルを列挙
@@ -17,5 +18,8 @@ else:
 initJNI(JNIVersion.v1_8, @["-Djava.class.path=" & paths.join(sep)])
 
 # call method
-echo Generators.randomBasedGenerator().generate().toString()
-echo Generators.nameBasedGenerator().generate("name").toString()
+var randomBased = Generators.randomBasedGenerator().generate().toString()
+var nameBased = Generators.nameBasedGenerator().generate("name").toString()
+
+echo fmt"{ randomBased = }"
+echo fmt"{ nameBased   = }"
