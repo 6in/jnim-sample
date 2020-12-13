@@ -15,13 +15,13 @@ repositories {
     jcenter()
 }
 
+// 利用したいライブラリを追加
 dependencies {
-    // https://mvnrepository.com/artifact/com.fasterxml.uuid/java-uuid-generator
     compile group: 'com.fasterxml.uuid', name: 'java-uuid-generator', version: '4.0.1'
 }
 
-// dependenciesで定義されているJarおよび関連するJarをコピーする
-task copyRuntimeLibs(type: Copy) {
+// dependenciesで定義されているJarおよび関連するJarをjarsにコピーする
+task collectJars(type: Copy) {
     into "jars"
     from configurations.runtime
   }
